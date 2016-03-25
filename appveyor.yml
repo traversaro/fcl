@@ -1,0 +1,33 @@
+os:
+  - Visual Studio 2013
+  - Visual Studio 2015
+
+configuration:
+  - Debug
+  - Release
+  
+clone_folder: c:\dev\fcl
+
+environment:
+  BOOST_ROOT:        C:\Libraries\boost
+
+build_script:
+  - git clone https://github.com/danfis/libccd c:\dev\libccd
+  - cd c:\dev\libccd
+  - md build
+  - cd build
+  - cmake ..
+  - cmake --build . --config %CONFIGURATION%
+  - cmake --build . --config %CONFIGURATION% --target INSTALL 
+
+  - cd c:\dev\fcl
+  - md build
+  - cd build
+  - cmake .. 
+  - cmake --build . --config %CONFIGURATION%
+
+test_script:
+  - cmake --build . --config %CONFIGURATION% --target RUN_TESTS
+
+after_build:
+  - cmake --build . --config %CONFIGURATION% --target INSTALL 
