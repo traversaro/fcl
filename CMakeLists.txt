@@ -171,7 +171,10 @@ if(NOT ccd_FOUND)
   endif()
 endif()
 
-if(NOT ccd_FOUND)
+# If ccd_FOUND is false but a target ccd is present in the build, 
+# do not print an error as probably both ccd and fcl are included 
+# using add_subdirectory(...) in a bigger project
+if(NOT ccd_FOUND AND NOT TARGET ccd)
   message(FATAL_ERROR "CCD is required by FCL")
 endif()
 
