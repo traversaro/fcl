@@ -114,6 +114,12 @@ target_include_directories(${PROJECT_NAME} INTERFACE
   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
+# VS2017 support, see https://github.com/conda-forge/fcl-feedstock/pull/11#issuecomment-968054820
+if(MSVC)
+  target_compile_definitions(${PROJECT_NAME}
+    PUBLIC _ENABLE_EXTENDED_ALIGNED_STORAGE)
+endif()
+
 export(TARGETS ${PROJECT_NAME}
   FILE "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-targets.cmake"
 )
