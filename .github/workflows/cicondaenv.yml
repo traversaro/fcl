@@ -1,0 +1,12 @@
+name: fcldev
+channels:
+  - conda-forge
+dependencies:
+  - cmake
+  - cxx-compiler
+  - ninja
+  - pkg-config
+    - flann
+    - libccd-double
+    - eigen
+    - octomap
