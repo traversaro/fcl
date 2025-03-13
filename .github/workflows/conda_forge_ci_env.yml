@@ -6,7 +6,7 @@ dependencies:
   - cxx-compiler
   - ninja
   - pkg-config
-    - flann
-    - libccd-double
-    - eigen
-    - octomap
+  - flann
+  - libccd-double
+  - eigen
+  - octomap
